@@ -53,19 +53,47 @@ To get the 25 *most common* words, you will have to sort your counts. If you are
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
+import requests
+
 %matplotlib inline
 
 # Your code here
-
-# Pseudo-code outline
+macbeth = requests.get('http://www.gutenberg.org/cache/epub/2264/pg2264.txt').text
 
 # Split the transcript into words
+all_words = macbeth.split()
+
 # Create a dictionary
-# Iterate through the text of Macbeth
+word_library = {}
+
 # Update word counts
+def count(word):
+    if word in word_library:
+        word_library[word] += 1
+    else:
+        word_library.update({word:1})
+
+# Iterate through the text of Macbeth
+for word in all_words:
+    count(word)
+
 # Sort words by counts in descending order
+total_counts = list(word_library.items())
+top_25 = sorted(total_counts, key = lambda x: x[1], reverse=True)[:25]
+
+x = [item[0] for item in top_25]
+y = [item[1] for item in top_25]
+
 # Create Bar Graph
+plt.figure(figsize = (11,11))
+plt.bar(X,y)
+X = np.arange(len(y))
+plt.xticks(X, [item[0] for item in top_25]);
+
 # Include descriptive titles and labels
+plt.xlabel("Word")
+plt.ylabel("Count")
+plt.show()
 ```
 
 ## Level Up (Optional)
