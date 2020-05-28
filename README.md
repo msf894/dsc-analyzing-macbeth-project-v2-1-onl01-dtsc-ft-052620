@@ -95,7 +95,7 @@ plt.xlabel("Word")
 plt.ylabel("Count")
 plt.show()
 ```
-![](/dsc-analyzing-macbeth-project-v2-1-onl01-dtsc-ft-052620/graph.png)
+![](graph.PNG)
 
 ## Level Up (Optional)
 This project should take you about an hour and a half to complete. If you're done much more quickly than that and are not behind in the course, feel free to deepen your knowledge by completing any or all of the following tasks until you run out of time:
